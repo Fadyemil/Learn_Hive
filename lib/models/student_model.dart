@@ -1,6 +1,13 @@
-class StudentModel {
-  final String name;
-  final int age;
+import 'package:hive/hive.dart';
 
-  StudentModel({required this.name, required this.age});
+part 'student_model.g.dart';
+
+@HiveType(typeId: 0)
+class StudentModel {
+  @HiveField(0)
+  final String name;
+  @HiveField(1)
+  final int grade;
+
+  StudentModel({required this.name, required this.grade});
 }
