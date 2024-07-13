@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/sockets/src/sockets_html.dart';
 import 'package:hive/hive.dart';
 import 'package:learn_hive/screen/my_home_page.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final directory = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   runApp(const MyApp());
@@ -35,8 +35,8 @@ class _MyAppState extends State<MyApp> {
       home: FutureBuilder(
         future: Hive.openBox('School'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionStatus.connected) {
-            return const MyHomePage();
+          if (snapshot.hasData) {
+            return  MyHomePage();
           } else if (snapshot.hasError) {
             print(snapshot.error.toString());
           }
