@@ -5,9 +5,9 @@ part 'student_model.g.dart';
 @HiveType(typeId: 0)
 class StudentModel {
   @HiveField(0)
-  final String name;
+   String name;
   @HiveField(1)
-  final int grade;
+   int grade;
 
   StudentModel({required this.name, required this.grade});
 }
